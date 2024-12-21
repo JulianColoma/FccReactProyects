@@ -4,39 +4,46 @@
   padding: 2rem;
   text-align: center;
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
 .card {
   padding: 2em;
+  width: 600px;
+}
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
 }
 
-.read-the-docs {
-  color: #888;
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  transition: background-color 0.7s ease;
 }
+#text{
+  transition: color 1s ease;
+}
+#author{
+  transition: color 1s ease;
+}
+#new-quote{
+  transition: color 1s ease;
+}
+#tweet-quote{
+  transition: color 1s ease;
+}
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+.buttons{
+  display: flex;
+  margin-inline:20px;
+  justify-content: space-between;
+}
+
