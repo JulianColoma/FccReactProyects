@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    gap: 10px; 
+    width: 100%; 
+    max-width: 900px;
+  }
+  
+#editor{
+    resize: none;
+    min-width: 500px;
+    min-height: 200px;
+    border-radius: 2%;
+    padding: 15px;
+}
+#preview{
+    background-color: aliceblue;
+    border-radius: 1%;
+    padding: 10px;
+    min-width: 1000px;
+}
+#title{
+    color: #FFF;
+}
+label {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #FFF;
+}
+
