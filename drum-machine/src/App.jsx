@@ -27,15 +27,15 @@ function App() {
   }, []);
 
   const pads = [
-    { id: 'heater1', key: 'Q', src: '../audios/Heater-1.mp3' },
-    { id: 'heater2', key: 'W', src: '../audios/Heater-2.mp3' },
-    { id: 'heater3', key: 'E', src: '../audios/Heater-3.mp3' },
-    { id: 'heater4', key: 'A', src: '../audios/Heater-4_1.mp3' },
-    { id: 'clap', key: 'S', src: '../audios/Heater-6.mp3' },
-    { id: 'open-hh', key: 'D', src: '../audios/Dsc_Oh.mp3' },
-    { id: 'kick-n-hat', key: 'Z', src: '../audios/Kick_n_Hat.mp3' },
-    { id: 'kick', key: 'X', src: '../audios/RP4_KICK_1.mp3' },
-    { id: 'closed-hh', key: 'C', src: '../audios/Cev_H2.mp3' },
+    { id: 'heater1', key: 'Q', src: '/Heater-1.mp3' },
+    { id: 'heater2', key: 'W', src: '/Heater-2.mp3' },
+    { id: 'heater3', key: 'E', src: '/Heater-3.mp3' },
+    { id: 'heater4', key: 'A', src: '/Heater-4_1.mp3' },
+    { id: 'clap', key: 'S', src: '/Heater-6.mp3' },
+    { id: 'open-hh', key: 'D', src: '/Dsc_Oh.mp3' },
+    { id: 'kick-n-hat', key: 'Z', src: 'Kick_n_Hat.mp3' },
+    { id: 'kick', key: 'X', src: '/RP4_KICK_1.mp3' },
+    { id: 'closed-hh', key: 'C', src: '/Cev_H2.mp3' },
   ];
 
   return (
