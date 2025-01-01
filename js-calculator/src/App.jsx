@@ -3,22 +3,41 @@ import './App.css'
 
 function App() {
   const [result, setResult] = useState('0')
+  const [solved, setSolved ]= useState(false)
   const handleClick = (e) => {
-    const input = e.target.value
-    const validatedInput = validate(input)
-    let newres = result == '0'? result + validatedInput : validatedInput
+    let res = result
+    let input = e.target.value
+    const newres = validate(input, res)
+    console.log('--------------')
+    console.log(res)
+    console.log(newres)
     setResult(newres)
+    setSolved(false)
   }
-  const validate = (input) =>{
-    if(result.slice(-2).match(/^[+\-*/]+$/) && input.match(/[+\-*/]/)) return ''
-    if(result[(result.length)-1] == '.' && input == '.') return ''
-    if(result == '' && input.match(/[+\.*/]/)) return ''
-    return input
+  const validate = (input, res) =>{
+    if(res.match(/^\d+\.\d+$/) && input == '.') input = ''
+    if((res[(res.length)-1]) == '.' && input == '.') input = ''
+    if(res == '' && input.match(/[+\.*/]/)) input = ''
+    if(solved && !(input).match(/[+\-*/]/)) res = ''
+    if(res == '0') res = ''
+    if(res[(res.length -1)]){
+      //if((res[(res.length -1)]).match(/[+\-*/]/) && input.match(/[+\-*/]/)) res[res.length -1] = input
+    }
+    return (res + input)
   }
   const solver = () =>{
-    let res = result
-    const newres = eval(res)
-    setResult(newres)
+    const res = result
+    let newres = eval(res) % 1 !== 0 ? round(eval(res)) : eval(res)
+    setResult(newres.toString())
+    setSolved(true)
+  }
+  const round = (num) => {
+    let strnum = (Math.round(num * 10000)/10000).toString()
+    let parts = strnum.split('.')
+    let beforeDot = parts[0]
+    let afterDot = parts[1].replace(/0+$/, "");
+
+    return `${beforeDot}.${afterDot}`
   }
   const clear = () =>{
     setResult('0')
