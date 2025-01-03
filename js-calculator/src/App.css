@@ -1,42 +1,67 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+#display{
+  display: flex;
+  padding: 10px;
+  justify-content: flex-end;
+  align-items: flex-end;
+  border-radius: 1%;
+  font-size: 30px;
+  height: 70px;
+  
+  margin: 15px;
+  background-color: white;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.container{
+ background-color: #2C3E50;
+ border-radius: 2%;
+ width: 40vw;
+ height: 75vh;
+ padding: 15px;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+#grid {
+  display: grid; 
+  padding: 15px;
+  grid-template-columns: 1fr 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr; 
+  gap: 10px 10px; 
+  grid-template-areas: 
+    "ac ac ac divide"
+    "one two three multiply"
+    "four five six subtract"
+    "seven eight nine add"
+    "zero zero decimal equal"; 
 }
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#clear { grid-area: ac; background-color: #F1C40F;}
+#divide { grid-area: divide; }
+#one { grid-area: one; }
+#two { grid-area: two; }
+#three { grid-area: three; }
+#multiply { grid-area: multiply; }
+#subtract { grid-area: subtract; }
+#add { grid-area: add; }
+#equals { 
+  grid-area: equal;
+  background-color: #E74C3C;
+ }
+#decimal { grid-area: decimal; }
+#zero { grid-area: zero; }
+#four { grid-area: four; }
+#five { grid-area: five; }
+#six { grid-area: six; }
+#seven { grid-area: seven; }
+#eight { grid-area: eight; }
+#nine { grid-area: nine; }
+button{
+  height: 11vh;
+  font-size: 25px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.number{
+  background-color: #ECF0F1;
 }
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.operator{
+  background-color: #3498DB;
 }
