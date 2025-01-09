@@ -5,6 +5,7 @@ import { useTimer } from "react-timer-hook";
 function App() {
   const [time, setTime] = useState({ session: 25, break: 5 });
   const [isBreak, setIsBreak] = useState(false);
+  const [showZero, setShowZero] = useState(false);
   const [expiryTimestamp, setExpiryTimestamp] = useState(() => {
     const now = new Date();
     now.setMinutes(now.getMinutes() + 25);
@@ -26,23 +27,26 @@ function App() {
   });
 
   const handleTimerEnd = () => {
+    setShowZero(true)
+    setTimeout(() => {   
+    setShowZero(false)
     const newTime = new Date();
     if (isBreak) {
-      playAudio();
       setIsBreak(false);
       handleReset();
     } else {
       newTime.setMinutes(newTime.getMinutes() + time.break);
       setIsBreak(true);
-      restart(newTime, false); 
-
+      restart(newTime, true); 
     }
+    playAudio();
+    }, 1000)
   };
 
   const changetime = (bk, inc) => {
     let prevtime = time;
     if (
-      (!inc && ((bk && prevtime.break === 0) || (!bk && prevtime.session === 0))) ||
+      (!inc && ((bk && prevtime.break === 1) || (!bk && prevtime.session === 1))) ||
       (inc && ((bk && prevtime.break === 60) || (!bk && prevtime.session === 60)))
     )
       return;
@@ -63,7 +67,14 @@ function App() {
       audioRef.current.play();
     }
   };
+  const resetAudio = () =>{
+    if (audioRef.current) {
+      audioRef.current.pause(); 
+      audioRef.current.currentTime = 0; 
+    }
+  }
   const handleReset = () => {
+    resetAudio();
     setTime({ session: 25, break: 5 });
     const newExpiry = new Date();
     newExpiry.setMinutes(newExpiry.getMinutes() + 25);
@@ -71,6 +82,22 @@ function App() {
     restart(newExpiry, false);
     setIsBreak(false);
   };
+  const formatTime = () =>{
+    if(showZero) return '00:00'
+    
+    let min = minutes
+    let sec = seconds
+    
+    if(!showZero && min == 0){
+      return '60:00'
+    } 
+
+    min < 10? min = `0${min}` : min.toString()
+    sec < 10? sec = `0${sec}` : sec.toString()
+
+    return min + ':' + sec
+  } 
+  
 
   return (
     <>
@@ -96,10 +123,11 @@ function App() {
             -
           </button>
         </section>
+        </div>
         <section id="timer-label">
           <h2>{isBreak ? "Break" : "Session"}</h2>
           <p id="time-left">
-            {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+            {formatTime()}
           </p>
           <button id="start_stop" onClick={isRunning ? pause : start}>
             {isRunning ? "Pause" : "Start"}
@@ -113,7 +141,6 @@ function App() {
               id='beep'
             ></audio>
         </section>
-      </div>
     </>
   );
 }
